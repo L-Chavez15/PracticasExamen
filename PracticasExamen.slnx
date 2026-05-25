@@ -2,5 +2,6 @@
   <Project Path="Clases/Clases.csproj" Id="fece7abe-ba26-4a9f-afce-95500542ac40" />
   <Project Path="ClasesEj2/ClasesEj2.csproj" Id="65cc704a-a571-4973-9eb1-2d6eb482cc17" />
   <Project Path="ClasesEJ3/ClasesEJ3.csproj" Id="635dbfa6-c761-4525-8a43-81a6f481d9ea" />
+  <Project Path="ClasesEj4/ClasesEj4.csproj" Id="77cf7e64-aa68-4f07-87ef-0e6617f068a4" />
   <Project Path="Ejecucion/Ejecucion.csproj" Id="541bdde3-a567-451e-9294-eb193b46d315" />
 </Solution>

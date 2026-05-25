@@ -1,4 +1,4 @@
-﻿using ClasesEJ3;
+﻿using ClasesEj4;
 using System;
 using System.CodeDom;
 using System.Collections;
@@ -14,49 +14,55 @@ namespace Ejecucion
     {
         static void Main(string[] args)
         {
-            Arbol arb3= new Arbol();
+            ArbolEj5 arbEj5 = new ArbolEj5();
+            Destino d1 = new Destino(); 
+            d1.lugar = "cajamarca"; d1.precio = 35;
+            Destino d2 = new Destino(); 
+            d2.lugar = "lima"; d2.precio = 42;
+            Destino d3 = new Destino(); 
+            d3.lugar = "trujillo"; d3.precio = 30;
+            Destino d4 = new Destino(); 
+            d4.lugar = "cusco"; d4.precio = 60;
+            Destino d5 = new Destino(); 
+            d5.lugar = "chimbote"; d5.precio = 37;
+            Destino d6 = new Destino(); 
+            d6.lugar = "piura"; d6.precio = 28;
+
+            arbEj5.Ingresar(ref arbEj5.raizPrincipal, d1);
+            arbEj5.Ingresar(ref arbEj5.raizPrincipal, d2);
+            arbEj5.Ingresar(ref arbEj5.raizPrincipal, d3);
+            arbEj5.Ingresar(ref arbEj5.raizPrincipal, d4);
+            arbEj5.Ingresar(ref arbEj5.raizPrincipal, d5);
+            arbEj5.Ingresar(ref arbEj5.raizPrincipal, d6);
+
             int op = 0;
             do
             {
                 Console.Clear();
-                Console.WriteLine("------------------------");
-                Console.WriteLine("1.ingresar");
-                Console.WriteLine("2.mostrar");
-                Console.WriteLine("3.buscar");
-                Console.Write("INGRESE UNA OPCION: ");
-                op=int.Parse(Console.ReadLine());
-                Console.WriteLine("------------------------");
+                Console.WriteLine("\n:::DESTINOS DISPONIBLES :::");
+                Console.WriteLine("----------------------------------------");
+                arbEj5.Mostrar(arbEj5.raizPrincipal);
+                Console.WriteLine("----------------------------------------");
+                Console.WriteLine("1. Buscar ruta a destino:");
+                Console.WriteLine("0. Salir");
+                Console.Write("Ingrese opcion: ");
+                op = int.Parse(Console.ReadLine());
 
                 switch (op)
                 {
                     case 0:
-                        Console.WriteLine("ADIOS");
+                        Console.WriteLine("ADIOS :D");
                         break;
                     case 1:
-                        Persona p = new Persona();
-                        Console.WriteLine("CODIGO: "+p.codigo);
-                        Console.Write("INGRESE SU NOMBRE: ");
-                        p.nombre = Console.ReadLine();
-                        Console.Write("INGRESE SU EDAD: ");
-                        p.edad = int.Parse(Console.ReadLine());
-                        arb3.Ingresar(ref arb3.raizPrincipal, p);
-                        break;
-                    case 2:
-                        Console.WriteLine("******ARBOL FAMILIAR******");
-                        arb3.Mostrar(arb3.raizPrincipal, 0);
-                        break;
-                    case 3:
-                        Console.WriteLine("******BUSQUEDA******");
-                        int bus;
-                        Console.WriteLine("Ingrese código: ");
-                        bus = int.Parse(Console.ReadLine());
-                        arb3.Buscar(ref arb3.raizPrincipal, bus);
-                        break;
+                        Console.Write("Ingrese Nombre del destino: ");
+                        string destinoBuscado = Console.ReadLine();
+                        Console.WriteLine("----------------------------------");
+                        int total = 0;
+                        int tramo = 0;
+                        arbEj5.Buscar(arbEj5.raizPrincipal, destinoBuscado, ref total, ref tramo); break;
                     default:
-                        Console.WriteLine("ingrese un opcion valida");
                         break;
                 }
-
                 Console.ReadKey();
             } while (op!=0);
         }

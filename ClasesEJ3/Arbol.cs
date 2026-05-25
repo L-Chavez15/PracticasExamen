@@ -75,6 +75,12 @@ namespace ClasesEJ3
                     Console.WriteLine("Edad: " + raiz.dato.edad);
                 }
             }
+            /*Console.WriteLine("******BUSQUEDA******");
+            int bus;
+            Console.WriteLine("Ingrese código: ");
+            bus = int.Parse(Console.ReadLine());
+            arb3.Buscar(ref arb3.raizPrincipal, bus);
+            break;*/
         }
     }
 }
