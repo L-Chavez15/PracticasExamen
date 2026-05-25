@@ -4,13 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clases
+namespace ClasesEj2
 {
     public class Nodo
     {
-        //ejercicio 1
-        public persona dato;
-        public Nodo derecha=null;
+        public int dato;
+        public Nodo derecha = null;
         public Nodo izquierda=null;
     }
 }

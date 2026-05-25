@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Pipes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Clases
+namespace ClasesEJ3
 {
     public class Nodo
     {
-        //ejercicio 1
-        public persona dato;
-        public Nodo derecha=null;
-        public Nodo izquierda=null;
+        public Persona dato;
+        public Nodo derecha = null;
+        public Nodo izquierda = null;
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -8,66 +10,78 @@ namespace Clases
 {
     public class Arbol
     {
+        //ejercicio 1
         public Nodo raizPrincipal = null;
+        int numIntegrantes = 0;
 
-        public void Insertar(ref Nodo raiz, int dato)
+        public void Ingresar(ref Nodo raiz, persona p)
         {
-            if (raizPrincipal == null)
+            if (raiz == null)
             {
                 Nodo nuevo = new Nodo();
-                nuevo.dato = dato;
-
+                nuevo.dato = p;
+                numIntegrantes++;
+                raiz = nuevo;
             }
             else
             {
-                if (dato < raiz.dato)
+                if (p.edad < raiz.dato.edad)
                 {
-                    Insertar(ref raiz.izquierda, dato);
+                    Ingresar(ref raiz.izquierda, p);
                 }
-                else if (dato > raiz.dato)
+                else if (p.edad > raiz.dato.edad)
                 {
-                    Insertar(ref raiz.derecha, dato);
+                    Ingresar(ref raiz.derecha, p);
                 }
                 else
                 {
-                    Console.WriteLine("DATO REPETIDO"); 
-                }
+                    Console.WriteLine("DATO REPETIDO");
+                } 
+                    
             }
         }
         public void Mostrar(Nodo raiz, int nivel)
         {
-            Mostrar(raiz.derecha, nivel+1);
-            for (int i = 0; i < nivel; i++)
+            if (raiz!=null)
             {
-                Console.Write("   ");
+                Mostrar(raiz.derecha, nivel + 1);
+                for (int i = 0; i < nivel; i++)
+                {
+                    Console.Write("\t\t\t");
+                }
+                Console.WriteLine(raiz.dato.edad+"-"+raiz.dato.nombre + "-" +raiz.dato.apellidos);
+                Mostrar(raiz.izquierda, nivel + 1);
             }
-            Mostrar(raiz.izquierda, nivel+1);
         }
-        public void Buscar(Nodo raiz, int dato)//ref: muestra los datos originales, no es obligatorio
+        public void NumPer()
         {
-            if (raiz == null)
+            Console.WriteLine(numIntegrantes);   
+        }
+        public void Buscar(Nodo raiz, string dato)//ref: muestra los datos originales, no es obligatorio
+        {
+            if (raiz != null)
             {
-                Console.WriteLine("DATO NO ENCONTRADO");
-            }
-            else
-            {
-                if (dato < raiz.dato)
+                if (raiz.dato.nombre == dato)
                 {
-                    //izq
-                    Buscar(raiz.izquierda, dato);
+                    Console.WriteLine("PERSONA ENCONTRADA");
+                    Console.WriteLine("HIJOS:");
+
+                    if (raiz.izquierda != null)
+                    {
+                        Console.WriteLine(raiz.izquierda.dato.nombre);
+                    }
+
+                    if (raiz.derecha != null)
+                    {
+                        Console.WriteLine(raiz.derecha.dato.nombre);
+                    }
                 }
-                else if (dato > raiz.dato)
-                {
-                    //der
-                    Buscar(raiz.derecha, dato);
-                }
-                else
-                {
-                    Console.WriteLine("DATO ENCONTRADO");
-                }
+
+                Buscar(raiz.izquierda, dato);
+                Buscar(raiz.derecha, dato);
             }
         }
-        public void Eliminar( Nodo raiz, int dato)
+        /*public void Eliminar( ref Nodo raiz, int dato)
         {
             if (raiz == null)
             {
@@ -79,12 +93,12 @@ namespace Clases
                 if (dato < raiz.dato)
                 {
                     // izq (Recuerda agregar "ref" en la llamada recursiva)
-                    Eliminar( raiz.izquierda, dato);
+                    Eliminar( ref raiz.izquierda, dato);
                 }
                 else if (dato > raiz.dato)
                 {
                     // der (Recuerda agregar "ref" en la llamada recursiva)
-                    Eliminar( raiz.derecha, dato);
+                    Eliminar( ref raiz.derecha, dato);
                 }
                 else
                 {
@@ -115,10 +129,10 @@ namespace Clases
                         raiz.dato = sucesor.dato;
 
                         // Mandamos a eliminar el sucesor original que ya copiamos
-                        Eliminar( raiz.derecha, sucesor.dato);
+                        Eliminar( ref raiz.derecha, sucesor.dato);
                     }
                 }
-            }
-        }
+            }*/
+
     }
 }
